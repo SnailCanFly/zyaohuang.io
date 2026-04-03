@@ -1,21 +1,25 @@
 {
-  "id": "apilj-local-test",
-  "name": "apilj本地测试源",
-  "api": "https://apilj.com/api.php/provide/vod/at/json/",
+  "id": "apilj-test",
+  "name": "Aapilj教学源_修复版",
+  "api": "https://apilj.com",
   "nsfw": false,
-  "type": 2,
+  "type": 1,
   "extra": {
     "gfw": false,
     "searchLimit": 12,
-    "categories": [
-      {"name": "首页", "id": ""},
-      {"name": "香港", "id": "1"},
-      {"name": "欧美", "id": "2"},
-      {"name": "日韩", "id": "3"},
-      {"name": "明星", "id": "4"}
-    ],
-    "playUrl": "https://lajiaoapi.com/watch?url=",
-    "playParse": "content",
-    "playParseType": "iframe"
+    "js": {
+      "category": [
+        {"text":"首页","id":"/"},
+        {"text":"香港","id":"1"},
+        {"text":"欧美","id":"2"},
+        {"text":"日韩","id":"3"},
+        {"text":"明星","id":"4"}
+      ],
+      "home": "const cate=env.get(\"category\");const page=env.get(\"page\");let url;if(cate==\"/\"){url=env.baseUrl;}else{url=`${env.baseUrl}/index.php/vod/type/id/${cate}/page/${page}.html`;}const $=utils.kitty.load(await utils.req(url));return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");const id=a.attr(\"href\")??\"\";const title=a.text().trim();const cover=\"\";const remark=$(item).find(\".time\").text().trim();return{id,title,cover,remark};});",
+      "detail": "const id=env.get(\"movieId\");const url=`${env.baseUrl}${id}`;const $=utils.kitty.load(await utils.req(url));const desc=\"暂无简介\";const playlist=[{title:\"播放源\",videos:[{id:id,text:\"播放\"}]}];return{desc,playlist};",
+      "search": "const wd=env.get(\"keyword\");const page=env.get(\"page\");const url=`${env.baseUrl}/index.php/vod/search/page/${page}/wd/${wd}.html`;const $=utils.kitty.load(await utils.req(url));return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");return{id:a.attr(\"href\"),title:a.text().trim(),cover:\"\"};});",
+      "parseIframe": "return `https://lajiaoapi.com/watch?url=https://apilj.com${env.get(\"playId\")}`;",
+      "player": true
+    }
   }
 }
