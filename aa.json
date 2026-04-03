@@ -1,6 +1,6 @@
 {
-  "id": "apilj-test-standard",
-  "name": "apilj教学源_标准规范版",
+  "id": "apilj-test-final",
+  "name": "apilj教学源_最终可用版",
   "api": "https://apilj.com",
   "nsfw": false,
   "type": 1,
@@ -15,10 +15,10 @@
         {"text":"日韩","id":"3"},
         {"text":"明星","id":"4"}
       ],
-      "home": "const cate=env.get(\"category\");const page=env.get(\"page\");let url;if(cate==\"/\"){url=env.baseUrl;}else{url=`${env.baseUrl}/index.php/vod/type/id/${cate}/page/${page}.html`;}const {data} = await env.axios.get(url);const $=env.parseHTML(data);return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");return{id:a.attr(\"href\"),title:a.text().trim(),cover:\"\",remark:$(item).find(\".time\").text().trim()};});",
-      "detail": "const id=env.get(\"movieId\");const url=`${env.baseUrl}${id}`;const {data} = await env.axios.get(url);const $=env.parseHTML(data);const desc=$(\".detail-info .desc\").text()||\"暂无简介\";const playlist=[{title:\"播放源\",videos:[{id:id,text:\"播放\"}]}];return{desc,playlist};",
-      "search": "const wd=env.get(\"keyword\");const page=env.get(\"page\");const url=`${env.baseUrl}/index.php/vod/search/page/${page}/wd/${wd}.html`;const {data} = await env.axios.get(url);const $=env.parseHTML(data);return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");return{id:a.attr(\"href\"),title:a.text().trim(),cover:\"\"};});",
-      "parseIframe": "return `https://lajiaoapi.com/watch?url=${encodeURIComponent(`https://apilj.com${env.get(\"playId\")}`)}`;",
+      "home": "const cate=env.get(\"category\");const page=env.get(\"page\");let url;if(cate==\"/\"){url=env.baseUrl;}else{url=`${env.baseUrl}/index.php/vod/type/id/${cate}/page/${page}.html`;}const res=await env.fetch(url);const html=await res.text();const $=env.parseHTML(html);return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");const id=a.attr(\"href\")??\"\";const title=a.text().trim();const cover=\"\";const remark=$(item).find(\".time\").text().trim();return{id,title,cover,remark};});",
+      "detail": "const id=env.get(\"movieId\");const url=`${env.baseUrl}${id}`;const res=await env.fetch(url);const html=await res.text();const $=env.parseHTML(html);const desc=\"暂无简介\";const playlist=[{title:\"播放源\",videos:[{id:id,text:\"播放\"}]}];return{desc,playlist};",
+      "search": "const wd=env.get(\"keyword\");const page=env.get(\"page\");const url=`${env.baseUrl}/index.php/vod/search/page/${page}/wd/${wd}.html`;const res=await env.fetch(url);const html=await res.text();const $=env.parseHTML(html);return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");return{id:a.attr(\"href\"),title:a.text().trim(),cover:\"\"};});",
+      "parseIframe": "return `https://lajiaoapi.com/watch?url=${encodeURIComponent(env.baseUrl + env.get(\"playId\"))}`;",
       "player": true
     }
   }
