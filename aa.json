@@ -1,6 +1,6 @@
 {
-  "id": "apilj-test-json",
-  "name": "apilj教学源_JSON接口",
+  "id": "apilj-local-test",
+  "name": "apilj本地测试源",
   "api": "https://apilj.com/api.php/provide/vod/at/json/",
   "nsfw": false,
   "type": 2,
@@ -15,6 +15,7 @@
       {"name": "明星", "id": "4"}
     ],
     "playUrl": "https://lajiaoapi.com/watch?url=",
-    "playParse": "content"
+    "playParse": "content",
+    "playParseType": "iframe"
   }
 }
