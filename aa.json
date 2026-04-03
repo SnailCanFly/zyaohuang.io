@@ -1,53 +1,25 @@
-<?php
-header('Content-Type: application/json; charset=utf-8');
-
-// 模拟从你提供的网站抓取数据
-$list = [
-    [
-        "vod_id" => 211164,
-        "vod_name" => "MD0013 test1",
-        "type_name" => "香港",
-        "vod_pic" => "https://img.example.com/cover.jpg",
-        "vod_remarks" => "连载中",
-        "vod_time" => "2026-04-03",
-        "vod_play_url" => "第1集$https://example.com/1.m3u8",
-    ],
-    [
-        "vod_id" => 211155,
-        "vod_name" => "FSDSS-816 test2",
-        "type_name" => "香港",
-        "vod_pic" => "https://img.example.com/cover2.jpg",
-        "vod_remarks" => "连载中",
-        "vod_time" => "2026-04-03",
-        "vod_play_url" => "第1集$https://example.com/2.m3u8",
-    ]
-];
-
-// ======================
-// 接口1：获取视频列表
-// ======================
-if (@$_GET['ac'] == 'videolist') {
-    echo json_encode([
-        "code" => 1,
-        "page" => 1,
-        "pagecount" => 10,
-        "list" => $list
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
+{
+  "id": "apilj-test",
+  "name": "apilj教学源",
+  "api": "https://apilj.com",
+  "nsfw": false,
+  "type": 1,
+  "extra": {
+    "gfw": false,
+    "searchLimit": 12,
+    "js": {
+      "category": [
+        {"text":"首页","id":"/"},
+        {"text":"香港","id":"1"},
+        {"text":"欧美","id":"2"},
+        {"text":"日韩","id":"3"},
+        {"text":"明星","id":"4"}
+      ],
+      "home": "const cate=env.get(\"category\");const page=env.get(\"page\");let url;if(cate==\"/\"){url=env.baseUrl;}else{url=`${env.baseUrl}/index.php/vod/type/id/${cate}/page/${page}.html`;}const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");const id=a.attr(\"href\")??\"\";const title=a.text().trim();const cover=\"\";const remark=$(item).find(\".time\").text().trim();return{id,title,cover,remark};});",
+      "detail": "const id=env.get(\"movieId\");const url=`${env.baseUrl}${id}`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));const desc=\"暂无简介\";const playlist=[{title:\"播放源\",videos:[{id:\"/\",text:\"播放\"}]}];return{desc,playlist};",
+      "search": "const wd=env.get(\"keyword\");const page=env.get(\"page\");const url=`${env.baseUrl}/index.php/vod/search/page/${page}/wd/${wd}.html`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".videoContent li\").toArray().map(item=>{const a=$(item).find(\".videoName\");return{id:a.attr(\"href\"),title:a.text().trim(),cover:\"\"};});",
+      "parseIframe": "return \"https://apilj.com/blank.m3u8\";",
+      "player": true
+    }
+  }
 }
-
-// ======================
-// 接口2：获取视频详情
-// ======================
-if (@$_GET['ac'] == 'detail') {
-    echo json_encode([
-        "code" => 1,
-        "list" => [
-            $list[0] // 返回第一个视频的播放地址
-        ]
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
-// 默认
-echo json_encode(["code" => 0, "msg" => "本地测试源"]);
