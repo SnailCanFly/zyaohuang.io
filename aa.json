@@ -1,7 +1,7 @@
 {
   "id": "testsource",
   "name": "测试源",
-  "api": "https://www.okzyw.net/provide/vod/",
+  "api": "https://www.okzyw.net/api.php/provide/vod/",
   "nsfw": false,
   "type": 0
 }
