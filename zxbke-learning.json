@@ -1,0 +1,18 @@
+{
+  "id": "zxbke-learning",
+  "name": "真不卡-教学源",
+  "api": "https://www.dgytlt.com",
+  "nsfw": false,
+  "type": 1,
+  "extra": {
+    "gfw": false,
+    "searchLimit": 12,
+    "js": {
+      "category": [{"text":"首页","id":"/"},{"text":"电影","id":"1"},{"text":"电视剧","id":"2"},{"text":"综艺","id":"3"},{"text":"动漫","id":"4"},{"text":"排行榜","id":"week"}],
+      "home": "const cate=env.get(\"category\");const page=env.get(\"page\");let url;if(cate==\"/\"){url=env.baseUrl;}else if(cate==\"week\"){url=`${env.baseUrl}/label/week.html`;}else{url=`${env.baseUrl}/vodtype/${cate}-page-${page}.html`;}const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".stui-vodlist__box\").toArray().map(item=>{const a=$(item).find(\".stui-vodlist__thumb\");const id=a.attr(\"href\")??\"\";const cover=a.attr(\"data-original\")??\"\";const title=a.attr(\"title\")??\"\";const remark=$(item).find(\".pic-text\").text().trim();return{id,title,cover,remark}});",
+      "detail": "const id=env.get(\"movieId\");const url=`${env.baseUrl}${id}`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));const desc=$(\".detail p\").text().trim();const tabs=$(\".nav-tabs a\").toArray().map(t=>$(t).text().trim());const playlist=$(\".tab-pane\").toArray().map((b,i)=>{const v=$(b).find(\"li a\").toArray().map(a=>({id:a.attr(\"href\"),text:$(a).text().trim()}));return{title:tabs[i],videos:v}});return{desc,playlist};",
+      "search": "const wd=env.get(\"keyword\");const page=env.get(\"page\");const url=`${env.baseUrl}/vodsearch/${wd}-----${page}---.html`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".stui-vodlist__box\").toArray().map(i=>{const a=$(i).find(\"a\");return{id:a.attr(\"href\"),title:a.attr(\"title\"),cover:a.attr(\"data-original\")}});",
+      "parseIframe": "const f=env.get(\"iframe\");const h=await(0,utils_1.req)(`${env.baseUrl}${f}`);const $=utils_1.kitty.load(h);const s=$('script').toArray().find(x=>$(x).text().includes('player_aaaa'));const d=eval('('+$(s).text().match(/player_aaaa=({.+})/)[1]+')');return d.url;"
+    }
+  }
+}
