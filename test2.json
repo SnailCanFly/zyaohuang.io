@@ -1,0 +1,23 @@
+{
+  "id": "maccms-teach",
+  "name": "苹果CMS教学源",
+  "api": "https://www.test.cn",
+  "nsfw": false,
+  "type": 1,
+  "extra": {
+    "gfw": false,
+    "js": {
+      "category": [
+        {"text":"首页","id":"/"},
+        {"text":"电影","id":"1"},
+        {"text":"电视剧","id":"2"},
+        {"text":"综艺","id":"3"},
+        {"text":"动漫","id":"4"}
+      ],
+      "home": "const cate=env.get('category');const page=env.get('page');let url;if(cate=='/'){url=env.baseUrl;}else{url=`${env.baseUrl}/index.php/vod/type/id/${cate}/page/${page}.html`;}const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".stui-vodlist__box\").map((i,el)=>{const a=$(el).find(\"a\");return{id:a.attr('href'),title:a.attr('title'),cover:a.attr('data-original')||a.attr('src'),remark:$(el).find('.pic-text').text().trim()}}).get();",
+      "detail": "const id=env.get('movieId');const url=`${env.baseUrl}${id}`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));const title=$('.title').text().trim();const cover=$('.stui-content__thumb img').attr('src');const desc=$('.stui-content__desc').text().trim();let videos=[];$('.stui-content__playlist li').each((i,el)=>{const name=$(el).find('.copy_text').text().trim();const playUrl=$(el).find('.hidden-xs').text().trim().replace('$','');videos.push({name,playUrl});});return{title,cover,desc,playlist:[{title:'dbm3u8',videos}]};",
+      "search": "const wd=env.get('keyword');const page=env.get('page');const url=`${env.baseUrl}/index.php/vod/search.html?wd=${wd}&page=${page}`;const $=utils_1.kitty.load(await(0,utils_1.req)(url));return $(\".stui-vodlist__box\").map((i,el)=>{const a=$(el).find(\"a\");return{id:a.attr('href'),title:a.attr('title'),cover:a.attr('data-original')}}).get();",
+      "parseIframe": "return env.get('playUrl');"
+    }
+  }
+}
