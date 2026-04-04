@@ -2,14 +2,10 @@
   {
     "id": "hsckzy888",
     "name": "我的测试",
-    "type": 0,
     "api": "https://lbapi9.com/api.php/provide/vod",
     "nsfw": true,
-    "status": true,
-    "logo": "",
     "extra": {
-      "gfw": false,
-      "searchLimit": 20
+      "gfw": false
     }
   }
 ]
