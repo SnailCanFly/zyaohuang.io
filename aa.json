@@ -1,11 +1,19 @@
 [
   {
-    "id": "hsckzy888",
-    "name": "我的测试",
-    "api": "https://lbapi9.com/api.php/provide/vod",
+    "id": "xxibao-test",
+    "name": "学习测试源",
+    "type": 0,
+    "api": "https://www.xxibaozyw.com/api.php/provide/vod/at/json",
     "nsfw": true,
+    "status": true,
     "extra": {
-      "gfw": false
+      "jiexiUrl": "https://xj-player.com/player.php/?url=",
+      "gfw": false,
+      "searchLimit": 20,
+      "sniffer": {
+        "mode": 1,
+        "timeout": 15000
+      }
     }
   }
 ]
