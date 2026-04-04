@@ -1,26 +1,56 @@
 [
   {
-    "id": "didicms",
-    "name": "🔞滴滴",
+    "id": "normal_vod_01",
+    "name": "正规影视源1",
     "type": 0,
-    "api": "https://api.ddapi.cc/api.php/provide/vod",
-    "nsfw": true,
-    "status": true
+    "logo": "",
+    "desc": "学习用苹果CMS影视源",
+    "nsfw": false,
+    "status": true,
+    "api": "https://cmsapi.funapi.cc/api.php/provide/vod",
+    "extra": {
+      "searchLimit": 20,
+      "gfw": false,
+      "sniffer": {
+        "mode": 0,
+        "timeout": 15000
+      }
+    }
   },
   {
-    "id": "jikuncms",
-    "name": "🔞鸡坤",
+    "id": "normal_vod_02",
+    "name": "正规影视源2",
     "type": 0,
-    "api": "https://jkunzyapi.com/api.php/provide/vod",
-    "nsfw": true,
-    "status": true
+    "logo": "",
+    "desc": "学习用苹果CMS影视源",
+    "nsfw": false,
+    "status": true,
+    "api": "https://api.kupian.cc/api.php/provide/vod",
+    "extra": {
+      "searchLimit": 20,
+      "gfw": false,
+      "sniffer": {
+        "mode": 0,
+        "timeout": 15000
+      }
+    }
   },
   {
-    "id": "tgzyw",
-    "name": "🔞TG资源",
+    "id": "normal_vod_03",
+    "name": "正规影视源3",
     "type": 0,
-    "api": "https://tgzyz.pp.ua/api.php/provide/vod",
-    "nsfw": true,
-    "status": true
+    "logo": "",
+    "desc": "学习用苹果CMS影视源",
+    "nsfw": false,
+    "status": true,
+    "api": "https://api.zybus.cc/api.php/provide/vod",
+    "extra": {
+      "searchLimit": 20,
+      "gfw": false,
+      "sniffer": {
+        "mode": 0,
+        "timeout": 15000
+      }
+    }
   }
 ]
