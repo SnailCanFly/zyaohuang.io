@@ -1,13 +1,15 @@
 [
   {
-    "id": "niuniuziyuan",
-    "name": "牛牛视频",
-    "api": "http://91md.me/api.php/provide/vod",
-    "nsfw": true,
-    "logo": "https://api.niuniuzy.me/template/niuniuzy/static/images/logo.png",
+    "id": "hsckzy888",
+    "name": "黄色仓库",
     "type": 0,
+    "api": "https://hsckzy888.com/api.php/provide/vod/from/hsckm3u8/at/json",
+    "nsfw": true,
+    "status": true,
+    "logo": "",
     "extra": {
-      "gfw": false
+      "gfw": false,
+      "searchLimit": 20
     }
   }
 ]
